@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego UNO</title>
+    <link rel="stylesheet" href="..//css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Juego UNO</h1>
+        
+        <!-- Configuración Inicial -->
+        <div id="setup">
+            <h2>Configuración del Juego</h2>
+            <label for="numPlayers">Cantidad de jugadores:</label>
+            <input type="number" id="numPlayers" min="2" max="10" required>
+            
+            <button onclick="nextStep()">Siguiente</button>
+        </div>
+
+        <!-- Entrada de nombres de jugadores -->
+        <div id="playerSetup" style="display: none;">
+            <h2>Ingrese los nombres de los jugadores</h2>
+            <div id="playerNames"></div>
+            <button onclick="selectStartingPlayer()">Seleccionar Jugador Inicial</button>
+        </div>
+
+        <!-- Selección de jugador inicial -->
+        <div id="startingPlayerSetup" style="display: none;">
+            <h2>Seleccione quién comienza</h2>
+            <select id="startingPlayer"></select>
+            <button onclick="startGame()">Iniciar Juego</button>
+        </div>
+
+        <!-- Juego en curso -->
+        <div id="game" style="display: none;">
+            <h2>Puntuación para ganar: <span id="pointsToWin"></span></h2>
+            <p id="turnInfo"></p>
+            <label for="selectedPlayer">Selecciona jugador para sumar puntos:</label>
+            <select id="selectedPlayer"></select>
+            <br>
+            <label for="addPoints">Ingresa puntos a sumar:</label>
+            <input type="number" id="addPoints" min="1">
+            <button onclick="addPointsToPlayer()">Agregar puntos</button>
+            <ul id="scoreboard"></ul>
+            <p id="shuffleInfo"></p>
+        </div>
+    </div>
+
+    <script src="..//js/script.js"></script>
+</body>
+</html>
