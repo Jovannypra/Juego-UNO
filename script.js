@@ -3,6 +3,8 @@ let currentPlayerIndex = 0;
 let pointsToWin = 0;
 let playerScores = [];
 
+
+
 // Paso 1: Configuración inicial
 function nextStep() {
     const numPlayers = document.getElementById('numPlayers').value;
@@ -49,6 +51,25 @@ function selectStartingPlayer() {
         option.value = index;
         option.textContent = player;
         startingPlayerSelect.appendChild(option);
+    });
+
+    // Aplicar colores a los nombres
+    const playerNamesDiv = document.getElementById('playerNames');
+    playerNamesDiv.querySelectorAll('input').forEach((input, index) => {
+        if (index === 0) {
+            // Primer jugador: rosa
+            input.style.backgroundColor = 'pink';
+            input.style.color = 'black';  // Asegura que el texto sea visible
+        } else if (index === 1) {
+            // Segundo jugador: azul
+            input.style.backgroundColor = 'blue';
+            input.style.color = 'white';  // Asegura que el texto sea visible
+        } else {
+            // Jugadores restantes: colores aleatorios
+            const randomColor = getRandomColor();
+            input.style.backgroundColor = randomColor;
+            input.style.color = 'white';  // Asegura que el texto sea visible
+        }
     });
 }
 
@@ -101,7 +122,8 @@ function updateTurnInfo() {
     document.getElementById('turnInfo').textContent = `Es el turno de ${players[currentPlayerIndex]}.`;
     
     const nextPlayerIndex = (currentPlayerIndex + 1) % players.length;
-    document.getElementById('shuffleInfo').textContent = `El siguiente en barajar es ${players[nextPlayerIndex]}.`;
+    const shuffleInfo = document.getElementById('shuffleInfo');
+    shuffleInfo.innerHTML = `El siguiente en barajar es <span class="red-text">${players[nextPlayerIndex]}</span>.`;
 }
 
 // Agrega puntos al jugador seleccionado
