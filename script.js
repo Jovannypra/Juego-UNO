@@ -140,3 +140,4 @@ function resetGame() {
     players = [];
     playerScores = [];
 }
+
